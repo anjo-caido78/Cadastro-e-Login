@@ -1,0 +1,43 @@
+    //  CADASTRO
+document.getElementById('CadastroJ').addEventListener('submit', function(event){
+    event.preventDefault();
+
+    const username = document.getElementById('usuario2').value;
+    const email = document.getElementById('email2').value;
+    const password = document.getElementById('password2');
+    const confirmarSenha = document.getElementById('confirmaSN');
+
+    if (!username || !password || !confirmarSenha || !email) {
+        alert('Preencha o cadastro');
+        return;
+    }
+
+    if (confirmarSenha !== password) {
+        alert('As senhas não estão corretas!');
+        return;
+    }
+
+    alert('Está tudo Certo!');
+
+    // Salva corretamente
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+    localStorage.setItem('email', email);
+});
+    //  LOGIN
+document.getElementById('LoginDeP').addEventListener('submit', function(event){
+    event.preventDefault();
+
+    const senha = document.getElementById('senhalogn').value;
+    const Emaill = document.getElementById('Emailogn').value;
+
+    // Recupera o que foi salvo no cadastro
+    const emailSalvo = localStorage.getItem('email');
+    const senhaSalva = localStorage.getItem('password');
+
+    if (Emaill === emailSalvo && senha === senhaSalva) {
+        alert('Login bem-sucedido!');
+    } else {
+        alert('Email ou senha incorretos!');
+    }
+});
